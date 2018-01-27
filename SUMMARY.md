@@ -8,7 +8,7 @@
 
 * 解决方案
   * 百度智能营销
-    * [api常见问题](solutions\百度智能营销\api常见问题.md)
+    * [api常见问题](solutions\BaiduSEM\api常见问题.md)
 * 知识点
   * 数据库
     * [mysql用户权限](knowledge\database\mysql权限管理.md)
