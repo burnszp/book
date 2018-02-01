@@ -22,7 +22,7 @@
     *  [弹窗播放视频](knowledge/web/弹窗播放视频.md)
     *  [html5无法播放mp4视频](knowledge/web/html5无法播放mp4视频.md)
   * 数据库  
-    * [mysql用户权限](knowledge/database/mysql分组查询符合条件的记录.md)
+    * [mysql分组查询符合条件的记录](knowledge/database/mysql分组查询符合条件的记录.md)
     * [mysql用户权限](knowledge/database/mysql权限管理.md)
     * [mysql三目运算](knowledge/database/mysql实现三目运算.md)
   * linux
