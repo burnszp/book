@@ -9,6 +9,7 @@
     * [json转换为对象的无法处理特殊格式日期的问题](opensource/nutz/json转换为对象的无法处理特殊格式日期的问题.md)
   * Spring boot
     * [Spring boot 入门](opensource/SpringBoot/SpringBoot入门.md)
+    * [Spring Boot扩展之缓存](opensource/SpringBoot/SpringBoot扩展之缓存.md)
 
 * 解决方案
   * 百度智能营销
