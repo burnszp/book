@@ -1,0 +1,879 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>zookeeper和kafka集群搭建 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    开发工具
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../tools/atom/atom_plugins_install.html">
+            
+                <a href="../../tools/atom/atom_plugins_install.html">
+            
+                    
+                    atom插件安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    开源组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    Flink
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../flink/flink集群搭建.html">
+            
+                <a href="../flink/flink集群搭建.html">
+            
+                    
+                    flink集群搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    Kafka
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.2.1" data-path="zookeeper和kafka集群搭建.html">
+            
+                <a href="zookeeper和kafka集群搭建.html">
+            
+                    
+                    zookeeper和kafka集群搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    Nutz
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../nutz/json转换为对象的无法处理特殊格式日期的问题.html">
+            
+                <a href="../nutz/json转换为对象的无法处理特殊格式日期的问题.html">
+            
+                    
+                    json转换为对象的无法处理特殊格式日期的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" >
+            
+                <span>
+            
+                    
+                    Spring boot
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="../SpringBoot/SpringBoot入门.html">
+            
+                <a href="../SpringBoot/SpringBoot入门.html">
+            
+                    
+                    Spring boot 入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="../SpringBoot/SpringBoot扩展之缓存.html">
+            
+                <a href="../SpringBoot/SpringBoot扩展之缓存.html">
+            
+                    
+                    Spring Boot扩展之缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.3" data-path="../SpringBoot/SpringBoot打包war部署到tomcat 404的问题.html">
+            
+                <a href="../SpringBoot/SpringBoot打包war部署到tomcat 404的问题.html">
+            
+                    
+                    SpringBoot打包war部署到tomcat 404的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    解决方案
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    百度智能营销
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../solutions/BaiduSEM/api常见问题.html">
+            
+                <a href="../../solutions/BaiduSEM/api常见问题.html">
+            
+                    
+                    api常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    微信小程序
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../solutions/wxapp/小程序上线注意事项.html">
+            
+                <a href="../../solutions/wxapp/小程序上线注意事项.html">
+            
+                    
+                    小程序上线注意事项
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    知识点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    web
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../knowledge/web/弹窗播放视频.html">
+            
+                <a href="../../knowledge/web/弹窗播放视频.html">
+            
+                    
+                    弹窗播放视频
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../../knowledge/web/html5无法播放mp4视频.html">
+            
+                <a href="../../knowledge/web/html5无法播放mp4视频.html">
+            
+                    
+                    html5无法播放mp4视频
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../../knowledge/database/mysql分组查询符合条件的记录.html">
+            
+                <a href="../../knowledge/database/mysql分组查询符合条件的记录.html">
+            
+                    
+                    mysql分组查询符合条件的记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../../knowledge/database/mysql权限管理.html">
+            
+                <a href="../../knowledge/database/mysql权限管理.html">
+            
+                    
+                    mysql用户权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../../knowledge/database/mysql实现三目运算.html">
+            
+                <a href="../../knowledge/database/mysql实现三目运算.html">
+            
+                    
+                    mysql三目运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    linux
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../../knowledge/linux/中文文件编码在linux系统乱码问题.html">
+            
+                <a href="../../knowledge/linux/中文文件编码在linux系统乱码问题.html">
+            
+                    
+                    中文文件编码在linux系统乱码问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    tomcat
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../../knowledge/tomcat/IntelliJ集成tomcat启动乱码.html">
+            
+                <a href="../../knowledge/tomcat/IntelliJ集成tomcat启动乱码.html">
+            
+                    
+                    IntelliJ集成tomcat启动乱码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >zookeeper和kafka集群搭建</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="zookeeper&#x548C;kafka&#x96C6;&#x7FA4;&#x642D;&#x5EFA;">zookeeper&#x548C;kafka&#x96C6;&#x7FA4;&#x642D;&#x5EFA;</h1>
+<ul>
+<li>&#x6458;&#x81EA;&#xFF1A;<a href="https://blog.csdn.net/my_bai/article/details/68490632" target="_blank">https://blog.csdn.net/my_bai/article/details/68490632</a><h2 id="kafka&#x521D;&#x8BC6;">Kafka&#x521D;&#x8BC6;</h2>
+</li>
+</ul>
+<h3 id="kafka&#x4F7F;&#x7528;&#x80CC;&#x666F;">Kafka&#x4F7F;&#x7528;&#x80CC;&#x666F;</h3>
+<p>&#x5728;&#x6211;&#x4EEC;&#x5927;&#x91CF;&#x4F7F;&#x7528;&#x5206;&#x5E03;&#x5F0F;&#x6570;&#x636E;&#x5E93;&#x3001;&#x5206;&#x5E03;&#x5F0F;&#x8BA1;&#x7B97;&#x96C6;&#x7FA4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x5426;&#x4F1A;&#x9047;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF1A;</p>
+<ul>
+<li>&#x6211;&#x4EEC;&#x60F3;&#x5206;&#x6790;&#x4E0B;&#x7528;&#x6237;&#x884C;&#x4E3A;&#xFF08;pageviews&#xFF09;&#xFF0C;&#x4EE5;&#x4FBF;&#x6211;&#x4EEC;&#x8BBE;&#x8BA1;&#x51FA;&#x66F4;&#x597D;&#x7684;&#x5E7F;&#x544A;&#x4F4D;</li>
+<li>&#x6211;&#x60F3;&#x5BF9;&#x7528;&#x6237;&#x7684;&#x641C;&#x7D22;&#x5173;&#x952E;&#x8BCD;&#x8FDB;&#x884C;&#x7EDF;&#x8BA1;&#xFF0C;&#x5206;&#x6790;&#x51FA;&#x5F53;&#x524D;&#x7684;&#x6D41;&#x884C;&#x8D8B;&#x52BF;</li>
+<li>&#x6709;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x5E93;&#x6D6A;&#x8D39;&#xFF0C;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x786C;&#x76D8;&#x6548;&#x7387;&#x53C8;&#x4F4E;</li>
+</ul>
+<p>&#x8FD9;&#x4E9B;&#x573A;&#x666F;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5171;&#x540C;&#x70B9;&#xFF1A;
+&#x6570;&#x636E;&#x662F;&#x7531;&#x4E0A;&#x6E38;&#x6A21;&#x5757;&#x4EA7;&#x751F;&#xFF0C;&#x4E0A;&#x6E38;&#x6A21;&#x5757;&#xFF0C;&#x4F7F;&#x7528;&#x4E0A;&#x6E38;&#x6A21;&#x5757;&#x7684;&#x6570;&#x636E;&#x8BA1;&#x7B97;&#x3001;&#x7EDF;&#x8BA1;&#x3001;&#x5206;&#x6790;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6D88;&#x606F;&#x7CFB;&#x7EDF;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;&#x7CFB;&#x7EDF;&#xFF01;</p>
+<h3 id="kafka&#x7684;&#x5B9A;&#x4E49;">Kafka&#x7684;&#x5B9A;&#x4E49;</h3>
+<p>What is Kafka&#xFF1A;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;&#x7CFB;&#x7EDF;&#xFF0C;&#x7531;linkedin&#x4F7F;&#x7528;scala&#x7F16;&#x5199;&#xFF0C;&#x7528;&#x4F5C;LinkedIn&#x7684;&#x6D3B;&#x52A8;&#x6D41;&#xFF08;Activity Stream&#xFF09;&#x548C;&#x8FD0;&#x8425;&#x6570;&#x636E;&#x5904;&#x7406;&#x7BA1;&#x9053;&#xFF08;Pipeline&#xFF09;&#x7684;&#x57FA;&#x7840;&#x3002;&#x5177;&#x6709;&#x9AD8;&#x6C34;&#x5E73;&#x6269;&#x5C55;&#x548C;&#x9AD8;&#x541E;&#x5410;&#x91CF;&#x3002;</p>
+<h3 id="kafka&#x548C;&#x5176;&#x4ED6;&#x4E3B;&#x6D41;&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;&#x7CFB;&#x7EDF;&#x7684;&#x5BF9;&#x6BD4;">Kafka&#x548C;&#x5176;&#x4ED6;&#x4E3B;&#x6D41;&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;&#x7CFB;&#x7EDF;&#x7684;&#x5BF9;&#x6BD4;</h3>
+<p><img src="kafka1.jpg" alt="kafka&#x5BF9;&#x6BD4;"></p>
+<h2 id="zookeeper&#x96C6;&#x7FA4;&#x642D;&#x5EFA;">Zookeeper&#x96C6;&#x7FA4;&#x642D;&#x5EFA;</h2>
+<p>Kafka&#x96C6;&#x7FA4;&#x662F;&#x628A;&#x72B6;&#x6001;&#x4FDD;&#x5B58;&#x5728;Zookeeper&#x4E2D;&#x7684;&#xFF0C;&#x9996;&#x5148;&#x8981;&#x642D;&#x5EFA;Zookeeper&#x96C6;&#x7FA4;&#x3002;</p>
+<h3 id="&#x8F6F;&#x4EF6;&#x73AF;&#x5883;">&#x8F6F;&#x4EF6;&#x73AF;&#x5883;</h3>
+<p>3&#x53F0;&#x670D;&#x52A1;&#x5668;-&#x6211;&#x7684;&#x6D4B;&#x8BD5;&#xFF09;
+192.168.1.60 server1
+192.168.1.62 server2
+192.168.1.63 server3</p>
+<ul>
+<li>1&#x3001;Linux&#x670D;&#x52A1;&#x5668;&#x4E00;&#x53F0;&#x3001;&#x4E09;&#x53F0;&#x3001;&#x4E94;&#x53F0;&#x3001;&#xFF08;2*n+1&#xFF09;&#xFF0C;Zookeeper&#x96C6;&#x7FA4;&#x7684;&#x5DE5;&#x4F5C;&#x662F;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x624D;&#x80FD;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF0C;3&#x53F0;&#x4E2D;&#x8D85;&#x8FC7;&#x4E24;&#x53F0;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#xFF0C;&#x5141;&#x8BB8;1&#x53F0;&#x6302;&#x6389; &#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x7528;&#x5076;&#x6570;&#xFF0C;&#x5176;&#x5B9E;&#x6CA1;&#x5FC5;&#x8981;&#x3002;
+&#x5982;&#x679C;&#x6709;&#x56DB;&#x53F0;&#x90A3;&#x4E48;&#x6302;&#x6389;&#x4E00;&#x53F0;&#x8FD8;&#x5269;&#x4E0B;&#x4E09;&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x6302;&#x6389;&#x4E00;&#x4E2A;&#x5C31;&#x4E0D;&#x884C;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x8BB0;&#x4F4F;&#x662F;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x3002;</li>
+<li>2&#x3001;Java jdk1.8 zookeeper&#x662F;&#x7528;java&#x5199;&#x7684;&#x6240;&#x4EE5;&#x4ED6;&#x7684;&#x9700;&#x8981;JAVA&#x73AF;&#x5883;&#xFF0C;java&#x662F;&#x8FD0;&#x884C;&#x5728;java&#x865A;&#x62DF;&#x673A;&#x4E0A;&#x7684;</li>
+<li>3&#x3001;Zookeeper&#x7684;&#x7A33;&#x5B9A;&#x7248;&#x672C;Zookeeper 3.4.6&#x7248;&#x672C;</li>
+</ul>
+<h3 id="&#x914D;&#x7F6E;&#x5B89;&#x88C5;zookeeper&#x73AF;&#x5883;">&#x914D;&#x7F6E;&#x5B89;&#x88C5;zookeeper&#x73AF;&#x5883;</h3>
+<p>&#x9996;&#x5148;&#x8981;&#x6CE8;&#x610F;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x8981;&#x5B9A;&#x4E49;&#x597D;&#xFF0C;&#x9632;&#x6B62;&#x5728;&#x9879;&#x76EE;&#x8FC7;&#x591A;&#x7684;&#x65F6;&#x5019;&#x627E;&#x4E0D;&#x5230;&#x6240;&#x9700;&#x7684;&#x9879;&#x76EE;</p>
+<pre><code>#&#x9996;&#x5148;&#x521B;&#x5EFA;Zookeeper&#x9879;&#x76EE;&#x76EE;&#x5F55;
+mkdir zookeeper #&#x9879;&#x76EE;&#x76EE;&#x5F55;
+mkdir zkdata #&#x5B58;&#x653E;&#x5FEB;&#x7167;&#x65E5;&#x5FD7;
+mkdir zkdatalog#&#x5B58;&#x653E;&#x4E8B;&#x7269;&#x65E5;&#x5FD7;
+</code></pre><h3 id="&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<p>&#x8FDB;&#x5165;&#x5230;&#x89E3;&#x538B;&#x597D;&#x7684;zookeeper&#x7684;conf&#x76EE;&#x5F55;&#x4E0B;,&#x6709;&#x4E09;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;configuration.xsl,log4j.properties,zoo_sample.cfg</p>
+<ul>
+<li>zoo_sample.cfg  &#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x662F;&#x5B98;&#x65B9;&#x7ED9;&#x6211;&#x4EEC;&#x7684;zookeeper&#x7684;&#x6837;&#x677F;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x5B83;&#x590D;&#x5236;&#x4E00;&#x4EFD;&#x547D;&#x540D;&#x4E3A;zoo.cfg&#xFF0C;zoo.cfg&#x662F;&#x5B98;&#x65B9;&#x6307;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x5219;&#xFF0C;&#x505A;&#x5982;&#x4E0B;&#x914D;&#x7F6E;</li>
+</ul>
+<pre><code>tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/opt/zookeeper/zkdata
+dataLogDir=/opt/zookeeper/zkdatalog
+clientPort=12181
+server.1=192.168.1.60:12888:13888
+server.2=192.168.1.62:12888:13888
+server.3=192.168.1.63:12888:13888
+#server.1 &#x8FD9;&#x4E2A;1&#x662F;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6807;&#x8BC6;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5176;&#x4ED6;&#x7684;&#x6570;&#x5B57;&#xFF0C; &#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x662F;&#x7B2C;&#x51E0;&#x53F7;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x7528;&#x6765;&#x6807;&#x8BC6;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8FD9;&#x4E2A;&#x6807;&#x8BC6;&#x8981;&#x5199;&#x5230;&#x5FEB;&#x7167;&#x76EE;&#x5F55;&#x4E0B;&#x9762;myid&#x6587;&#x4EF6;&#x91CC;
+#192.168.1.60&#x4E3A;&#x96C6;&#x7FA4;&#x91CC;&#x7684;IP&#x5730;&#x5740;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x662F;master&#x548C;slave&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x7AEF;&#x53E3;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;2888&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x7AEF;&#x53E3;&#x662F;leader&#x9009;&#x4E3E;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x96C6;&#x7FA4;&#x521A;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x9009;&#x4E3E;&#x6216;&#x8005;leader&#x6302;&#x6389;&#x4E4B;&#x540E;&#x8FDB;&#x884C;&#x65B0;&#x7684;&#x9009;&#x4E3E;&#x7684;&#x7AEF;&#x53E3;&#x9ED8;&#x8BA4;&#x662F;3888
+</code></pre><ul>
+<li><p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x89E3;&#x91CA;</p>
+<pre><code>#tickTime&#xFF1A;
+&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x662F;&#x4F5C;&#x4E3A; Zookeeper &#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x6216;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x7EF4;&#x6301;&#x5FC3;&#x8DF3;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6BCF;&#x4E2A; tickTime &#x65F6;&#x95F4;&#x5C31;&#x4F1A;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5FC3;&#x8DF3;&#x3002;
+#initLimit&#xFF1A;
+&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x9879;&#x662F;&#x7528;&#x6765;&#x914D;&#x7F6E; Zookeeper &#x63A5;&#x53D7;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x8FD9;&#x91CC;&#x6240;&#x8BF4;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x4E0D;&#x662F;&#x7528;&#x6237;&#x8FDE;&#x63A5; Zookeeper &#x670D;&#x52A1;&#x5668;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x800C;&#x662F; Zookeeper &#x670D;&#x52A1;&#x5668;&#x96C6;&#x7FA4;&#x4E2D;&#x8FDE;&#x63A5;&#x5230; Leader &#x7684; Follower &#x670D;&#x52A1;&#x5668;&#xFF09;&#x521D;&#x59CB;&#x5316;&#x8FDE;&#x63A5;&#x65F6;&#x6700;&#x957F;&#x80FD;&#x5FCD;&#x53D7;&#x591A;&#x5C11;&#x4E2A;&#x5FC3;&#x8DF3;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x6570;&#x3002;&#x5F53;&#x5DF2;&#x7ECF;&#x8D85;&#x8FC7; 5&#x4E2A;&#x5FC3;&#x8DF3;&#x7684;&#x65F6;&#x95F4;&#xFF08;&#x4E5F;&#x5C31;&#x662F; tickTime&#xFF09;&#x957F;&#x5EA6;&#x540E; Zookeeper &#x670D;&#x52A1;&#x5668;&#x8FD8;&#x6CA1;&#x6709;&#x6536;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#xFF0C;&#x90A3;&#x4E48;&#x8868;&#x660E;&#x8FD9;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x5931;&#x8D25;&#x3002;&#x603B;&#x7684;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#x5C31;&#x662F; 5*2000=10 &#x79D2;
+#syncLimit&#xFF1A;
+&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x9879;&#x6807;&#x8BC6; Leader &#x4E0E;Follower &#x4E4B;&#x95F4;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF0C;&#x8BF7;&#x6C42;&#x548C;&#x5E94;&#x7B54;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF0C;&#x6700;&#x957F;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;&#x591A;&#x5C11;&#x4E2A; tickTime &#x7684;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF0C;&#x603B;&#x7684;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#x5C31;&#x662F;5*2000=10&#x79D2;
+#dataDir&#xFF1A;
+&#x5FEB;&#x7167;&#x65E5;&#x5FD7;&#x7684;&#x5B58;&#x50A8;&#x8DEF;&#x5F84;
+#dataLogDir&#xFF1A;
+&#x4E8B;&#x7269;&#x65E5;&#x5FD7;&#x7684;&#x5B58;&#x50A8;&#x8DEF;&#x5F84;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x914D;&#x7F6E;&#x8FD9;&#x4E2A;&#x90A3;&#x4E48;&#x4E8B;&#x7269;&#x65E5;&#x5FD7;&#x4F1A;&#x9ED8;&#x8BA4;&#x5B58;&#x50A8;&#x5230;dataDir&#x5236;&#x5B9A;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x4E25;&#x91CD;&#x5F71;&#x54CD;zk&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x5F53;zk&#x541E;&#x5410;&#x91CF;&#x8F83;&#x5927;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4EA7;&#x751F;&#x7684;&#x4E8B;&#x7269;&#x65E5;&#x5FD7;&#x3001;&#x5FEB;&#x7167;&#x65E5;&#x5FD7;&#x592A;&#x591A;
+#clientPort&#xFF1A;
+&#x8FD9;&#x4E2A;&#x7AEF;&#x53E3;&#x5C31;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5; Zookeeper &#x670D;&#x52A1;&#x5668;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;Zookeeper &#x4F1A;&#x76D1;&#x542C;&#x8FD9;&#x4E2A;&#x7AEF;&#x53E3;&#xFF0C;&#x63A5;&#x53D7;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BBF;&#x95EE;&#x8BF7;&#x6C42;&#x3002;&#x4FEE;&#x6539;&#x4ED6;&#x7684;&#x7AEF;&#x53E3;&#x6539;&#x5927;&#x70B9;
+</code></pre></li>
+</ul>
+<ul>
+<li>&#x521B;&#x5EFA;myid&#x6587;&#x4EF6;</li>
+</ul>
+<pre><code>#server1
+echo &quot;1&quot; &gt; /opt/zookeeper/zkdata/myid
+#server2
+echo &quot;2&quot; &gt; /opt/zookeeper/zkdata/myid
+#server3
+echo &quot;3&quot; &gt; /opt/zookeeper/zkdata/myid
+</code></pre><h3 id="&#x91CD;&#x8981;&#x914D;&#x7F6E;&#x8BF4;&#x660E;">&#x91CD;&#x8981;&#x914D;&#x7F6E;&#x8BF4;&#x660E;</h3>
+<ul>
+<li>1&#x3001;myid&#x6587;&#x4EF6;&#x548C;server.myid  &#x5728;&#x5FEB;&#x7167;&#x76EE;&#x5F55;&#x4E0B;&#x5B58;&#x653E;&#x7684;&#x6807;&#x8BC6;&#x672C;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x4ED6;&#x662F;&#x6574;&#x4E2A;zk&#x96C6;&#x7FA4;&#x7528;&#x6765;&#x53D1;&#x73B0;&#x5F7C;&#x6B64;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x6807;&#x8BC6;&#x3002;</li>
+<li>2&#x3001;zoo.cfg &#x6587;&#x4EF6;&#x662F;zookeeper&#x914D;&#x7F6E;&#x6587;&#x4EF6; &#x5728;conf&#x76EE;&#x5F55;&#x91CC;&#x3002;</li>
+<li>3&#x3001;log4j.properties&#x6587;&#x4EF6;&#x662F;zk&#x7684;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x6587;&#x4EF6; &#x5728;conf&#x76EE;&#x5F55;&#x91CC;&#x7528;java&#x5199;&#x7684;&#x7A0B;&#x5E8F;&#x57FA;&#x672C;&#x4E0A;&#x6709;&#x4E2A;&#x5171;&#x540C;&#x70B9;&#x65E5;&#x5FD7;&#x90FD;&#x7528;log4j&#xFF0C;&#x6765;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x3002;</li>
+<li>4&#x3001;zkEnv.sh&#x548C;zkServer.sh&#x6587;&#x4EF6;<ul>
+<li>zkServer.sh &#x4E3B;&#x7684;&#x7BA1;&#x7406;&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;</li>
+<li>zkEnv.sh &#x662F;&#x4E3B;&#x8981;&#x914D;&#x7F6E;&#xFF0C;zookeeper&#x96C6;&#x7FA4;&#x542F;&#x52A8;&#x65F6;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x7684;&#x6587;&#x4EF6;</li>
+</ul>
+</li>
+<li>5&#x3001;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x9700;&#x8981;&#x6CE8;&#x610F;<ul>
+<li>zooKeeper server will not remove old snapshots and log files when using the default configuration (see autopurge below), this is the responsibility of the operator</li>
+<li>zookeeper&#x4E0D;&#x4F1A;&#x4E3B;&#x52A8;&#x7684;&#x6E05;&#x9664;&#x65E7;&#x7684;&#x5FEB;&#x7167;&#x548C;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;&#x662F;&#x64CD;&#x4F5C;&#x8005;&#x7684;&#x8D23;&#x4EFB;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x542F;&#x52A8;&#x670D;&#x52A1;&#x5E76;&#x67E5;&#x770B;">&#x542F;&#x52A8;&#x670D;&#x52A1;&#x5E76;&#x67E5;&#x770B;</h3>
+<ul>
+<li>&#x542F;&#x52A8;zookeeper&#x670D;&#x52A1;</li>
+</ul>
+<pre><code>#&#x8FDB;&#x5165;&#x5230;Zookeeper&#x7684;bin&#x76EE;&#x5F55;&#x4E0B;
+cd /opt/zookeeper/zookeeper-3.4.6/bin
+#&#x542F;&#x52A8;&#x670D;&#x52A1;&#xFF08;3&#x53F0;&#x90FD;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#xFF09;
+./zkServer.sh start
+</code></pre><ul>
+<li>&#x68C0;&#x67E5;&#x670D;&#x52A1;&#x72B6;&#x6001;</li>
+</ul>
+<pre><code>#&#x68C0;&#x67E5;&#x670D;&#x52A1;&#x5668;&#x72B6;&#x6001;
+./zkServer.sh status
+&#x901A;&#x8FC7;status&#x5C31;&#x80FD;&#x770B;&#x5230;&#x72B6;&#x6001;&#xFF1A;
+
+JMX enabled by default
+Using config: /opt/zookeeper/zookeeper-3.4.6/bin/../conf/zoo.cfg  #&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+Mode: follower  #&#x4ED6;&#x662F;&#x5426;&#x4E3A;&#x9886;&#x5BFC;
+</code></pre><p>zk&#x96C6;&#x7FA4;&#x4E00;&#x822C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;leader&#xFF0C;&#x591A;&#x4E2A;follower&#xFF0C;&#x4E3B;&#x4E00;&#x822C;&#x662F;&#x76F8;&#x5E94;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BFB;&#x5199;&#x8BF7;&#x6C42;&#xFF0C;&#x800C;&#x4ECE;&#x4E3B;&#x540C;&#x6B65;&#x6570;&#x636E;&#xFF0C;&#x5F53;&#x4E3B;&#x6302;&#x6389;&#x4E4B;&#x540E;&#x5C31;&#x4F1A;&#x4ECE;follower&#x91CC;&#x6295;&#x7968;&#x9009;&#x4E3E;&#x4E00;&#x4E2A;leader&#x51FA;&#x6765;&#x3002;</p>
+<h2 id="kafka&#x96C6;&#x7FA4;&#x642D;&#x5EFA;">kafka&#x96C6;&#x7FA4;&#x642D;&#x5EFA;</h2>
+<h3 id="&#x8F6F;&#x4EF6;&#x73AF;&#x5883;">&#x8F6F;&#x4EF6;&#x73AF;&#x5883;</h3>
+<ul>
+<li>&#x548C;&#x4E0A;&#x8FF0;zookeeper&#x4E00;&#x6837;&#x7684;&#x4E09;&#x53F0;&#x673A;&#x5668;</li>
+<li>&#x5DF2;&#x7ECF;&#x642D;&#x5EFA;&#x597D;zookeeper&#x96C6;&#x7FA4;</li>
+<li>&#x8F6F;&#x4EF6;&#x7248;&#x672C;kafka_2.11-0.9.0.1.tgz</li>
+</ul>
+<h2 id="&#x521B;&#x5EFA;&#x76EE;&#x5F55;">&#x521B;&#x5EFA;&#x76EE;&#x5F55;</h2>
+<pre><code>mkdir kafka #&#x521B;&#x5EFA;&#x9879;&#x76EE;&#x76EE;&#x5F55;
+cd kafka
+mkdir kafkalogs #&#x521B;&#x5EFA;kafka&#x6D88;&#x606F;&#x76EE;&#x5F55;&#xFF0C;&#x4E3B;&#x8981;&#x5B58;&#x653E;kafka&#x6D88;&#x606F;
+</code></pre><h3 id="&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<p>&#x8FDB;&#x5165;&#x5230;config&#x76EE;&#x5F55;</p>
+<pre><code>cd /opt/kafka/kafka_2.11-0.9.0.1/config/
+</code></pre><ul>
+<li>&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#xFF1A;server.properties &#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5373;&#x53EF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5728;&#x76EE;&#x5F55;&#x4E0B;&#xFF1A;
+&#x6709;&#x5F88;&#x591A;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6709;Zookeeper&#x6587;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;Kafka&#x5185;&#x5E26;&#x7684;zk&#x96C6;&#x7FA4;&#x6765;&#x542F;&#x52A8;&#xFF0C;&#x4F46;&#x662F;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x72EC;&#x7ACB;&#x7684;zk&#x96C6;&#x7FA4;</li>
+<li>&#x4FEE;&#x6539;server.properties&#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+</ul>
+<pre><code>broker.id=0  #&#x5F53;&#x524D;&#x673A;&#x5668;&#x5728;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#xFF0C;&#x548C;zookeeper&#x7684;myid&#x6027;&#x8D28;&#x4E00;&#x6837;
+port=19092 #&#x5F53;&#x524D;kafka&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x7684;&#x7AEF;&#x53E3;&#x9ED8;&#x8BA4;&#x662F;9092
+host.name=192.168.1.60 #&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x662F;&#x5173;&#x95ED;&#x7684;&#xFF0C;&#x5728;0.8.1&#x6709;&#x4E2A;bug&#xFF0C;DNS&#x89E3;&#x6790;&#x95EE;&#x9898;&#xFF0C;&#x5931;&#x8D25;&#x7387;&#x7684;&#x95EE;&#x9898;&#x3002;
+num.network.threads=3 #&#x8FD9;&#x4E2A;&#x662F;borker&#x8FDB;&#x884C;&#x7F51;&#x7EDC;&#x5904;&#x7406;&#x7684;&#x7EBF;&#x7A0B;&#x6570;
+num.io.threads=8 #&#x8FD9;&#x4E2A;&#x662F;borker&#x8FDB;&#x884C;I/O&#x5904;&#x7406;&#x7684;&#x7EBF;&#x7A0B;&#x6570;
+log.dirs=/opt/kafka/kafkalogs/ #&#x6D88;&#x606F;&#x5B58;&#x653E;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x4E3A;&#x201C;&#xFF0C;&#x201D;&#x9017;&#x53F7;&#x5206;&#x5272;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4E0A;&#x9762;&#x7684;num.io.threads&#x8981;&#x5927;&#x4E8E;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x4E2A;&#x6570;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x5982;&#x679C;&#x914D;&#x7F6E;&#x591A;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x65B0;&#x521B;&#x5EFA;&#x7684;topic&#x4ED6;&#x628A;&#x6D88;&#x606F;&#x6301;&#x4E45;&#x5316;&#x7684;&#x5730;&#x65B9;&#x662F;&#xFF0C;&#x5F53;&#x524D;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x5272;&#x7684;&#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x90A3;&#x4E2A;&#x5206;&#x533A;&#x6570;&#x6700;&#x5C11;&#x5C31;&#x653E;&#x90A3;&#x4E00;&#x4E2A;
+socket.send.buffer.bytes=102400 #&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;buffer&#x5927;&#x5C0F;&#xFF0C;&#x6570;&#x636E;&#x4E0D;&#x662F;&#x4E00;&#x4E0B;&#x5B50;&#x5C31;&#x53D1;&#x9001;&#x7684;&#xFF0C;&#x5148;&#x56DE;&#x5B58;&#x50A8;&#x5230;&#x7F13;&#x51B2;&#x533A;&#x4E86;&#x5230;&#x8FBE;&#x4E00;&#x5B9A;&#x7684;&#x5927;&#x5C0F;&#x540E;&#x5728;&#x53D1;&#x9001;&#xFF0C;&#x80FD;&#x63D0;&#x9AD8;&#x6027;&#x80FD;
+socket.receive.buffer.bytes=102400 #kafka&#x63A5;&#x6536;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x5230;&#x8FBE;&#x4E00;&#x5B9A;&#x5927;&#x5C0F;&#x540E;&#x5728;&#x5E8F;&#x5217;&#x5316;&#x5230;&#x78C1;&#x76D8;
+socket.request.max.bytes=104857600 #&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5411;kafka&#x8BF7;&#x6C42;&#x6D88;&#x606F;&#x6216;&#x8005;&#x5411;kafka&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x8BF7;&#x8BF7;&#x6C42;&#x7684;&#x6700;&#x5927;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;java&#x7684;&#x5806;&#x6808;&#x5927;&#x5C0F;
+num.partitions=1 #&#x9ED8;&#x8BA4;&#x7684;&#x5206;&#x533A;&#x6570;&#xFF0C;&#x4E00;&#x4E2A;topic&#x9ED8;&#x8BA4;1&#x4E2A;&#x5206;&#x533A;&#x6570;
+log.retention.hours=168 #&#x9ED8;&#x8BA4;&#x6D88;&#x606F;&#x7684;&#x6700;&#x5927;&#x6301;&#x4E45;&#x5316;&#x65F6;&#x95F4;&#xFF0C;168&#x5C0F;&#x65F6;&#xFF0C;7&#x5929;
+message.max.byte=5242880  #&#x6D88;&#x606F;&#x4FDD;&#x5B58;&#x7684;&#x6700;&#x5927;&#x503C;5M
+default.replication.factor=2  #kafka&#x4FDD;&#x5B58;&#x6D88;&#x606F;&#x7684;&#x526F;&#x672C;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x526F;&#x672C;&#x5931;&#x6548;&#x4E86;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x8FD8;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x63D0;&#x4F9B;&#x670D;&#x52A1;
+replica.fetch.max.bytes=5242880  #&#x53D6;&#x6D88;&#x606F;&#x7684;&#x6700;&#x5927;&#x76F4;&#x63A5;&#x6570;
+log.segment.bytes=1073741824 #&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#xFF1A;&#x56E0;&#x4E3A;kafka&#x7684;&#x6D88;&#x606F;&#x662F;&#x4EE5;&#x8FFD;&#x52A0;&#x7684;&#x5F62;&#x5F0F;&#x843D;&#x5730;&#x5230;&#x6587;&#x4EF6;&#xFF0C;&#x5F53;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;kafka&#x4F1A;&#x65B0;&#x8D77;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;
+log.retention.check.interval.ms=300000 #&#x6BCF;&#x9694;300000&#x6BEB;&#x79D2;&#x53BB;&#x68C0;&#x67E5;&#x4E0A;&#x9762;&#x914D;&#x7F6E;&#x7684;log&#x5931;&#x6548;&#x65F6;&#x95F4;&#xFF08;log.retention.hours=168 &#xFF09;&#xFF0C;&#x5230;&#x76EE;&#x5F55;&#x67E5;&#x770B;&#x662F;&#x5426;&#x6709;&#x8FC7;&#x671F;&#x7684;&#x6D88;&#x606F;&#x5982;&#x679C;&#x6709;&#xFF0C;&#x5220;&#x9664;
+log.cleaner.enable=false #&#x662F;&#x5426;&#x542F;&#x7528;log&#x538B;&#x7F29;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x7528;&#x542F;&#x7528;&#xFF0C;&#x542F;&#x7528;&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x6027;&#x80FD;
+zookeeper.connect=192.168.1.60:12181,192.168.1.62:12181,192.168.1.63:1218 #&#x8BBE;&#x7F6E;zookeeper&#x7684;&#x8FDE;&#x63A5;&#x7AEF;&#x53E3;
+</code></pre><h3 id="&#x542F;&#x52A8;kafka&#x96C6;&#x7FA4;&#x5E76;&#x6D4B;&#x8BD5;">&#x542F;&#x52A8;kafka&#x96C6;&#x7FA4;&#x5E76;&#x6D4B;&#x8BD5;</h3>
+<ul>
+<li>&#x542F;&#x52A8;&#x670D;&#x52A1;</li>
+</ul>
+<pre><code>#&#x4ECE;&#x540E;&#x53F0;&#x542F;&#x52A8;Kafka&#x96C6;&#x7FA4;&#xFF08;3&#x53F0;&#x90FD;&#x9700;&#x8981;&#x542F;&#x52A8;&#xFF09;
+cd
+/opt/kafka/kafka_2.11-0.9.0.1//bin #&#x8FDB;&#x5165;&#x5230;kafka&#x7684;bin&#x76EE;&#x5F55;
+./kafka-server-start.sh -daemon ../config/server.properties
+</code></pre><ul>
+<li>&#x68C0;&#x67E5;&#x670D;&#x52A1;&#x542F;&#x52A8;&#x6210;&#x529F;</li>
+</ul>
+<pre><code>#&#x6267;&#x884C;&#x547D;&#x4EE4;jps
+20348 Jps
+4233 QuorumPeerMain
+18991 Kafka
+</code></pre><ul>
+<li>&#x521B;&#x5EFA;Topic&#x6765;&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x521B;&#x5EFA;&#x6210;&#x529F;</li>
+</ul>
+<pre><code>#&#x521B;&#x5EFA;Topic
+./kafka-topics.sh --create --zookeeper 192.168.1.60:12181 --replication-factor 2 --partitions 1 --topic enilu-test
+#&#x89E3;&#x91CA;
+--replication-factor 2   #&#x590D;&#x5236;&#x4E24;&#x4EFD;
+--partitions 1 #&#x521B;&#x5EFA;1&#x4E2A;&#x5206;&#x533A;
+--topic #&#x4E3B;&#x9898;&#x4E3A;shuaige
+
+&apos;&apos;&apos;&#x5728;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53D1;&#x5E03;&#x8005;&apos;&apos;&apos;
+#&#x521B;&#x5EFA;&#x4E00;&#x4E2A;broker&#xFF0C;&#x53D1;&#x5E03;&#x8005;
+./kafka-console-producer.sh --broker-list 192.168.1.60:19092 --topic enilu-test
+
+&apos;&apos;&apos;&#x5728;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BA2;&#x9605;&#x8005;&apos;&apos;&apos;
+./kafka-console-consumer.sh --zookeeper localhost:12181 --topic enilu-test --from-beginning
+</code></pre><ul>
+<li>&#x5728;&#x53D1;&#x5E03;&#x8005;&#x7AEF;&#x547D;&#x4EE4;&#x884C;&#x8F93;&#x5165;&#x5185;&#x5BB9;&#xFF0C;&#x5219;&#x5728;&#x8BA2;&#x9605;&#x8005;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x8F93;&#x51FA;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6D88;&#x606F;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"zookeeper和kafka集群搭建","level":"1.3.2.1","depth":3,"next":{"title":"Nutz","level":"1.3.3","depth":2,"ref":"","articles":[{"title":"json转换为对象的无法处理特殊格式日期的问题","level":"1.3.3.1","depth":3,"path":"opensource/nutz/json转换为对象的无法处理特殊格式日期的问题.md","ref":"opensource/nutz/json转换为对象的无法处理特殊格式日期的问题.md","articles":[]}]},"previous":{"title":"Kafka","level":"1.3.2","depth":2,"ref":"","articles":[{"title":"zookeeper和kafka集群搭建","level":"1.3.2.1","depth":3,"path":"opensource/kafka/zookeeper和kafka集群搭建.md","ref":"opensource/kafka/zookeeper和kafka集群搭建.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"opensource/kafka/zookeeper和kafka集群搭建.md","mtime":"2018-05-27T08:02:55.089Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-27T08:29:45.774Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
