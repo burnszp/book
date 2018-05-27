@@ -5,11 +5,16 @@
   * [atom插件安装](tools/atom/atom_plugins_install.md)
 
 * 开源组件
+  * Flink
+    * [flink集群搭建](opensource/flink/flink集群搭建.md)
+  * Kafka
+    * [zookeeper和kafka集群搭建](opensource/kafka/zookeeper和kafka集群搭建.md)
   * Nutz
     * [json转换为对象的无法处理特殊格式日期的问题](opensource/nutz/json转换为对象的无法处理特殊格式日期的问题.md)
   * Spring boot
     * [Spring boot 入门](opensource/SpringBoot/SpringBoot入门.md)
     * [Spring Boot扩展之缓存](opensource/SpringBoot/SpringBoot扩展之缓存.md)
+    * [SpringBoot打包war部署到tomcat 404的问题](opensource/SpringBoot/SpringBoot打包war部署到tomcat 404的问题.md)
 
 * 解决方案
   * 百度智能营销
