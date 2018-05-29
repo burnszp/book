@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Spring Boot扩展之缓存 · GitBook</title>
+        <title>Spring Data JPA知识点集锦 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="SpringBoot打包war部署到tomcat 404的问题.html" />
     
-    
-    <link rel="prev" href="SpringBoot入门.html" />
+    <link rel="prev" href="SpringBoot打包war部署到tomcat 404的问题.html" />
     
 
     </head>
@@ -271,7 +269,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.4.2" data-path="SpringBoot扩展之缓存.html">
+        <li class="chapter " data-level="1.3.4.2" data-path="SpringBoot扩展之缓存.html">
             
                 <a href="SpringBoot扩展之缓存.html">
             
@@ -297,7 +295,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4.4" data-path="Spring Data JPA知识点集锦.html">
+        <li class="chapter active" data-level="1.3.4.4" data-path="Spring Data JPA知识点集锦.html">
             
                 <a href="Spring Data JPA知识点集锦.html">
             
@@ -619,7 +617,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Spring Boot扩展之缓存</a>
+        <a href="../.." >Spring Data JPA知识点集锦</a>
     </h1>
 </div>
 
@@ -634,37 +632,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="springboot&#x6269;&#x5C55;&#x4E4B;&#x7F13;&#x5B58;">SpringBoot&#x6269;&#x5C55;&#x4E4B;&#x7F13;&#x5B58;</h1>
-<h2 id="&#x914D;&#x7F6E;pomxml">&#x914D;&#x7F6E;pom.xml</h2>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-cache<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring-boot-version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+                                <h1 id="spring-data-jpa&#x77E5;&#x8BC6;&#x70B9;&#x96C6;&#x9526;">Spring Data JPA&#x77E5;&#x8BC6;&#x70B9;&#x96C6;&#x9526;</h1>
+<h2 id="&#x67E5;&#x8BE2;">&#x67E5;&#x8BE2;</h2>
+<h3 id="in&#x67E5;&#x8BE2;">in&#x67E5;&#x8BE2;</h3>
+<p>&#x4F7F;&#x7528;sql&#x8BED;&#x53E5;&#x4F7F;&#x7528;in&#x67E5;&#x8BE2;&#x62FC;&#x63A5;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x5BB9;&#x6613;&#x5199;&#x6210;&#xFF1A;</p>
+<pre><code>select  * from table_name where column_1 in (:column_1);
+query.setParameter(&quot;state&quot;,&quot;1,2,3&quot;);
+</code></pre><p>&#x4E0A;&#x8FF0;&#x5199;&#x6CD5;&#x4E0D;&#x4F1A;&#x62A5;&#x9519;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x4E0D;&#x4F1A;&#x6B63;&#x5E38;&#x67E5;&#x8BE2;&#xFF0C;&#x539F;&#x56E0;&#x5728;&#x6761;&#x4EF6;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#x800C;&#x4E0D;&#x80FD;&#x662F;&#x4E2A;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6B63;&#x786E;&#x5199;&#x6CD5;&#x4E3A;&#xFF1A;</p>
+<pre><code>select  * from table_name where column_1 in (:column_1);
+query.setParameter(&quot;state&quot;,Lists.newArrayList(1,2,3));
 </code></pre>
-<h2 id="applicationstart&#x542F;&#x7528;&#x7F13;&#x5B58;&#x6CE8;&#x89E3;enablecaching">ApplicationStart&#x542F;&#x7528;&#x7F13;&#x5B58;&#x6CE8;&#x89E3;:@EnableCaching</h2>
-<pre><code class="lang-java"><span class="hljs-meta">@SpringBootApplication</span>
-<span class="hljs-meta">@EnableCaching</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApplicationStart</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SpringBootServletInitializer</span> </span>{
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
-        SpringApplication.run(ApplicationStart.class, args);
-    }
-}
-</code></pre>
-<h2 id="repository&#x589E;&#x52A0;&#x7F13;&#x5B58;&#x6CE8;&#x89E3;&#xFF1A;">Repository&#x589E;&#x52A0;&#x7F13;&#x5B58;&#x6CE8;&#x89E3;&#xFF1A;</h2>
-<pre><code class="lang-java"><span class="hljs-meta">@Repository</span>
-<span class="hljs-meta">@CacheConfig</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CityRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PagingAndSortingRepository</span>&lt;<span class="hljs-title">City</span>, <span class="hljs-title">Long</span>&gt; </span>{
-    <span class="hljs-meta">@Cacheable</span>(cacheNames = <span class="hljs-string">&quot;findByIdCountry&quot;</span>)
-    <span class="hljs-function">List&lt;City&gt; <span class="hljs-title">findByIdCountry</span><span class="hljs-params">(Long idCountry)</span></span>;
-    <span class="hljs-meta">@Cacheable</span>(cacheNames = <span class="hljs-string">&quot;countByIdCountry&quot;</span>)
-    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countByIdCountry</span><span class="hljs-params">(Long id)</span></span>;
-    <span class="hljs-meta">@Cacheable</span>(cacheNames = <span class="hljs-string">&quot;findByName&quot;</span>)
-    <span class="hljs-function">City <span class="hljs-title">findByName</span><span class="hljs-params">(String cityName)</span></span>;
-}
-</code></pre>
-
                                 
                                 </section>
                             
@@ -691,14 +668,10 @@
 
             
                 
-                <a href="SpringBoot入门.html" class="navigation navigation-prev " aria-label="Previous page: Spring boot 入门">
+                <a href="SpringBoot打包war部署到tomcat 404的问题.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: SpringBoot打包war部署到tomcat 404的问题">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="SpringBoot打包war部署到tomcat 404的问题.html" class="navigation navigation-next " aria-label="Next page: SpringBoot打包war部署到tomcat 404的问题">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -707,7 +680,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Spring Boot扩展之缓存","level":"1.3.4.2","depth":3,"next":{"title":"SpringBoot打包war部署到tomcat 404的问题","level":"1.3.4.3","depth":3,"path":"opensource/SpringBoot/SpringBoot打包war部署到tomcat 404的问题.md","ref":"opensource/SpringBoot/SpringBoot打包war部署到tomcat 404的问题.md","articles":[]},"previous":{"title":"Spring boot 入门","level":"1.3.4.1","depth":3,"path":"opensource/SpringBoot/SpringBoot入门.md","ref":"opensource/SpringBoot/SpringBoot入门.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"opensource/SpringBoot/SpringBoot扩展之缓存.md","mtime":"2018-05-27T08:29:48.652Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-29T06:33:06.002Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Spring Data JPA知识点集锦","level":"1.3.4.4","depth":3,"next":{"title":"解决方案","level":"1.4","depth":1,"ref":"","articles":[{"title":"百度智能营销","level":"1.4.1","depth":2,"ref":"","articles":[{"title":"api常见问题","level":"1.4.1.1","depth":3,"path":"solutions/BaiduSEM/api常见问题.md","ref":"solutions/BaiduSEM/api常见问题.md","articles":[]}]},{"title":"微信小程序","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"小程序上线注意事项","level":"1.4.2.1","depth":3,"path":"solutions/wxapp/小程序上线注意事项.md","ref":"solutions/wxapp/小程序上线注意事项.md","articles":[]}]}]},"previous":{"title":"SpringBoot打包war部署到tomcat 404的问题","level":"1.3.4.3","depth":3,"path":"opensource/SpringBoot/SpringBoot打包war部署到tomcat 404的问题.md","ref":"opensource/SpringBoot/SpringBoot打包war部署到tomcat 404的问题.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"opensource/SpringBoot/Spring Data JPA知识点集锦.md","mtime":"2018-05-29T06:29:31.121Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-29T06:33:06.002Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
