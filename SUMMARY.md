@@ -15,6 +15,7 @@
     * [Spring boot 入门](opensource/SpringBoot/SpringBoot入门.md)
     * [Spring Boot扩展之缓存](opensource/SpringBoot/SpringBoot扩展之缓存.md)
     * [SpringBoot打包war部署到tomcat 404的问题](opensource/SpringBoot/SpringBoot打包war部署到tomcat 404的问题.md)
+    * [Spring Data JPA知识点集锦](opensource/SpringBoot/Spring Data JPA知识点集锦.md)
 
 * 解决方案
   * 百度智能营销
