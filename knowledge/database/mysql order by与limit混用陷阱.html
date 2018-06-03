@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>中文文件编码在linux系统乱码问题 · GitBook</title>
+        <title>mysql order by与limit混用陷阱 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    
+    <link rel="prev" href="mysql实现三目运算.html" />
     
 
     </head>
@@ -472,9 +474,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.2.1" data-path="../database/mysql分组查询符合条件的记录.html">
+        <li class="chapter " data-level="1.5.2.1" data-path="mysql分组查询符合条件的记录.html">
             
-                <a href="../database/mysql分组查询符合条件的记录.html">
+                <a href="mysql分组查询符合条件的记录.html">
             
                     
                     mysql分组查询符合条件的记录
@@ -485,9 +487,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2.2" data-path="../database/mysql权限管理.html">
+        <li class="chapter " data-level="1.5.2.2" data-path="mysql权限管理.html">
             
-                <a href="../database/mysql权限管理.html">
+                <a href="mysql权限管理.html">
             
                     
                     mysql用户权限
@@ -498,9 +500,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2.3" data-path="../database/mysql实现三目运算.html">
+        <li class="chapter " data-level="1.5.2.3" data-path="mysql实现三目运算.html">
             
-                <a href="../database/mysql实现三目运算.html">
+                <a href="mysql实现三目运算.html">
             
                     
                     mysql三目运算
@@ -511,9 +513,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2.4" data-path="../database/mysql order by与limit混用陷阱.html">
+        <li class="chapter active" data-level="1.5.2.4" data-path="mysql order by与limit混用陷阱.html">
             
-                <a href="../database/mysql order by与limit混用陷阱.html">
+                <a href="mysql order by与limit混用陷阱.html">
             
                     
                     mysql order by与limit混用陷阱
@@ -543,9 +545,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.3.1" data-path="中文文件编码在linux系统乱码问题.html">
+        <li class="chapter " data-level="1.5.3.1" data-path="../linux/中文文件编码在linux系统乱码问题.html">
             
-                <a href="中文文件编码在linux系统乱码问题.html">
+                <a href="../linux/中文文件编码在linux系统乱码问题.html">
             
                     
                     中文文件编码在linux系统乱码问题
@@ -628,7 +630,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >中文文件编码在linux系统乱码问题</a>
+        <a href="../.." >mysql order by与limit混用陷阱</a>
     </h1>
 </div>
 
@@ -643,13 +645,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x4E2D;&#x6587;&#x6587;&#x4EF6;&#x7F16;&#x7801;&#x5728;linux&#x7CFB;&#x7EDF;&#x4E71;&#x7801;&#x95EE;&#x9898;">&#x4E2D;&#x6587;&#x6587;&#x4EF6;&#x7F16;&#x7801;&#x5728;linux&#x7CFB;&#x7EDF;&#x4E71;&#x7801;&#x95EE;&#x9898;</h1>
-<p>&#x7ECF;&#x5E38;&#x9047;&#x5230;&#x4E2D;&#x6587;&#x6587;&#x4EF6;&#x4E0A;&#x4F20;&#x5230;linux&#x4E0A;&#x51FA;&#x73B0;&#x4E71;&#x7801;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x5728;&#x4E0D;&#x540C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x6587;&#x4EF6;&#x540D;&#x5B58;&#x50A8;&#x7684;&#x7F16;&#x7801;&#x4E0D;&#x4E00;&#x81F4;
-&#x5728;linux&#x4E0A;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5C06;&#x6587;&#x4EF6;&#x540D;&#x8F6C;&#x6362;&#x4E3A;utf8&#x5373;&#x53EF;
-convmv&#x5DE5;&#x5177;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;</p>
-<pre><code>convmv -f &#x6E90;&#x7F16;&#x7801; -t &#x65B0;&#x7F16;&#x7801; [&#x9009;&#x9879;] &#x6587;&#x4EF6;&#x540D;
-
-convmv -f gbk -t utf8 -r MY_DIR
+                                <h1 id="mysql-order-by&#x4E0E;limit&#x6DF7;&#x7528;&#x9677;&#x9631;">mysql order by&#x4E0E;limit&#x6DF7;&#x7528;&#x9677;&#x9631;</h1>
+<p>&#x6458;&#x81EA;&#xFF1A;<a href="https://www.jianshu.com/p/ead491db9749" target="_blank">https://www.jianshu.com/p/ead491db9749</a></p>
+<p>&#x5728;Mysql&#x4E2D;&#x6211;&#x4EEC;&#x5E38;&#x5E38;&#x7528;order by&#x6765;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x4F7F;&#x7528;limit&#x6765;&#x8FDB;&#x884C;&#x5206;&#x9875;&#xFF0C;&#x5F53;&#x9700;&#x8981;&#x5148;&#x6392;&#x5E8F;&#x540E;&#x5206;&#x9875;&#x65F6;&#x6211;&#x4EEC;&#x5F80;&#x5F80;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#x7684;&#x5199;&#x6CD5;select * from &#x8868;&#x540D; order by &#x6392;&#x5E8F;&#x5B57;&#x6BB5; limt M,N&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x5374;&#x9690;&#x85CF;&#x7740;&#x8F83;&#x6DF1;&#x7684;&#x4F7F;&#x7528;&#x9677;&#x9631;&#x3002;&#x5728;&#x6392;&#x5E8F;&#x5B57;&#x6BB5;&#x6709;&#x6570;&#x636E;&#x91CD;&#x590D;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F1A;&#x5F88;&#x5BB9;&#x6613;&#x51FA;&#x73B0;&#x6392;&#x5E8F;&#x7ED3;&#x679C;&#x4E0E;&#x9884;&#x671F;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x5F20;user&#x8868;&#xFF0C;&#x8868;&#x7ED3;&#x6784;&#x53CA;&#x6570;&#x636E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/32047-ea7ea362376cbc74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/663" alt="pic1"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/32047-62e82ae571a1cc65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/277" alt="pic2"></p>
+<p>&#x73B0;&#x5728;&#x60F3;&#x6839;&#x636E;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&#x5347;&#x5E8F;&#x67E5;&#x8BE2;user&#x8868;&#xFF0C;&#x5E76;&#x4E14;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#xFF0C;&#x6BCF;&#x9875;2&#x6761;&#xFF0C;&#x90A3;&#x5F88;&#x5BB9;&#x6613;&#x5199;&#x51FA;sql&#x4E3A;&#xFF1A;select * from user order by create_time limit pageNo,2;</p>
+<p>&#x5728;&#x6267;&#x884C;&#x67E5;&#x8BE2;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x53D1;&#x73B0;&#xFF1A;</p>
+<ul>
+<li><p>1&#x3001;&#x67E5;&#x8BE2;&#x7B2C;&#x4E00;&#x9875;&#x6570;&#x636E;&#x65F6;&#xFF1A;
+<img src="https://upload-images.jianshu.io/upload_images/32047-f84670ce75f0702d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/450" alt="pic3"></p>
+</li>
+<li><p>2&#x3001;&#x67E5;&#x8BE2;&#x7B2C;&#x56DB;&#x9875;&#x6570;&#x636E;&#x65F6;&#xFF1A;
+<img src="https://upload-images.jianshu.io/upload_images/32047-3ec44c15709b5c70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/470" alt="pic4"></p>
+</li>
+</ul>
+<p>user&#x8868;&#x5171;&#x6709;8&#x6761;&#x6570;&#x636E;&#xFF0C;&#x6709;4&#x9875;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x67E5;&#x8BE2;&#x8FC7;&#x7A0B;&#x4E2D;&#x7B2C;&#x4E00;&#x9875;&#x4E0E;&#x7B2C;&#x56DB;&#x9875;&#x7ADF;&#x7136;&#x51FA;&#x73B0;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#xFF1F;&#x96BE;&#x9053;&#x4E0A;&#x9762;&#x7684;&#x5206;&#x9875;SQL&#x4E0D;&#x662F;&#x5148;&#x5C06;&#x4E24;&#x4E2A;&#x8868;&#x5173;&#x8054;&#x67E5;&#x8BE2;&#x51FA;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6392;&#x597D;&#x5E8F;&#xFF0C;&#x518D;&#x53D6;&#x5BF9;&#x5E94;&#x5206;&#x9875;&#x7684;&#x6570;&#x636E;&#x5417;&#xFF1F;&#xFF1F;&#xFF1F;</p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x5B9E;&#x9645;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5DF2;&#x7ECF;&#x8BC1;&#x660E;&#x73B0;&#x5B9E;&#x4E0E;&#x60F3;&#x50CF;&#x5F80;&#x5F80;&#x662F;&#x6709;&#x5DEE;&#x8DDD;&#x7684;&#xFF0C;&#x5B9E;&#x9645;SQL&#x6267;&#x884C;&#x65F6;&#x5E76;&#x4E0D;&#x662F;&#x6309;&#x7167;&#x4E0A;&#x8FF0;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x7684;&#x3002;&#x8FD9;&#x91CC;&#x5176;&#x5B9E;&#x662F;Mysql&#x4F1A;&#x5BF9;Limit&#x505A;&#x4F18;&#x5316;&#xFF0C;&#x5177;&#x4F53;&#x4F18;&#x5316;&#x65B9;&#x5F0F;&#x89C1;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://dev.mysql.com/doc/refman/5.7/en/limit-optimization.html" target="_blank">https://dev.mysql.com/doc/refman/5.7/en/limit-optimization.html</a>
+&#x8FD9;&#x4E2A;&#x662F;5.7&#x7248;&#x672C;&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x63D0;&#x53D6;&#x51E0;&#x4E2A;&#x95EE;&#x9898;&#x76F4;&#x63A5;&#x76F8;&#x5173;&#x7684;&#x70B9;&#x505A;&#x4E0B;&#x8BF4;&#x660E;&#x3002;</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/32047-e148e92621a368bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="pic5"></p>
+<p>&#x4E0A;&#x9762;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x91CC;&#x9762;&#x6709;&#x63D0;&#x5230;&#x5982;&#x679C;&#x4F60;&#x5C06;Limit row_count&#x4E0E;order by&#x6DF7;&#x7528;&#xFF0C;mysql&#x4F1A;&#x627E;&#x5230;&#x6392;&#x5E8F;&#x7684;row_count&#x884C;&#x540E;&#x7ACB;&#x9A6C;&#x8FD4;&#x56DE;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6392;&#x5E8F;&#x6574;&#x4E2A;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x518D;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x662F;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x6392;&#x5E8F;&#xFF0C;&#x4F1A;&#x975E;&#x5E38;&#x5FEB;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x6587;&#x4EF6;&#x6392;&#x5E8F;&#xFF0C;&#x6240;&#x6709;&#x5339;&#x914D;&#x67E5;&#x8BE2;&#x7684;&#x884C;&#xFF08;&#x4E0D;&#x5E26;Limit&#x7684;&#xFF09;&#x90FD;&#x4F1A;&#x88AB;&#x9009;&#x4E2D;&#xFF0C;&#x88AB;&#x9009;&#x4E2D;&#x7684;&#x5927;&#x591A;&#x6570;&#x6216;&#x8005;&#x5168;&#x90E8;&#x4F1A;&#x88AB;&#x6392;&#x5E8F;&#xFF0C;&#x76F4;&#x5230;limit&#x8981;&#x6C42;&#x7684;row_count&#x88AB;&#x627E;&#x5230;&#x4E86;&#x3002;&#x5982;&#x679C;limit&#x8981;&#x6C42;&#x7684;row_count&#x884C;&#x4E00;&#x65E6;&#x88AB;&#x627E;&#x5230;&#xFF0C;Mysql&#x5C31;&#x4E0D;&#x4F1A;&#x6392;&#x5E8F;&#x7ED3;&#x679C;&#x96C6;&#x4E2D;&#x5269;&#x4F59;&#x7684;&#x884C;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x4E0B;&#x5BF9;&#x5E94;SQL&#x7684;&#x6267;&#x884C;&#x8BA1;&#x5212;&#xFF1A;
+<img src="https://upload-images.jianshu.io/upload_images/32047-747c5deff26a6fcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="pic6"></p>
+<p>&#x53EF;&#x4EE5;&#x786E;&#x8BA4;&#x662F;&#x7528;&#x7684;&#x6587;&#x4EF6;&#x6392;&#x5E8F;&#xFF0C;&#x8868;&#x786E;&#x5B9E;&#x4E5F;&#x6CA1;&#x6709;&#x52A0;&#x989D;&#x5916;&#x7684;&#x7D22;&#x5F15;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x8FD9;&#x4E2A;SQL&#x6267;&#x884C;&#x65F6;&#x662F;&#x4F1A;&#x627E;&#x5230;limit&#x8981;&#x6C42;&#x7684;&#x884C;&#x540E;&#x7ACB;&#x9A6C;&#x8FD4;&#x56DE;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x7684;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x5C31;&#x7B97;&#x5B83;&#x7ACB;&#x9A6C;&#x8FD4;&#x56DE;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x5206;&#x9875;&#x4F1A;&#x4E0D;&#x51C6;&#x5462;&#xFF1F;</p>
+<p>&#x5B98;&#x65B9;&#x6587;&#x6863;&#x91CC;&#x9762;&#x505A;&#x4E86;&#x5982;&#x4E0B;&#x8BF4;&#x660E;&#xFF1A;
+ <img src="https://upload-images.jianshu.io/upload_images/32047-9a5107714afe7be2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="pic7"></p>
+<p> &#x5982;&#x679C;order by&#x7684;&#x5B57;&#x6BB5;&#x6709;&#x591A;&#x4E2A;&#x884C;&#x90FD;&#x6709;&#x76F8;&#x540C;&#x7684;&#x503C;&#xFF0C;mysql&#x662F;&#x4F1A;&#x968F;&#x673A;&#x7684;&#x987A;&#x5E8F;&#x8FD4;&#x56DE;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x4F9D;&#x8D56;&#x5BF9;&#x5E94;&#x7684;&#x6267;&#x884C;&#x8BA1;&#x5212;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5982;&#x679C;&#x6392;&#x5E8F;&#x7684;&#x5217;&#x662F;&#x65E0;&#x5E8F;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6392;&#x5E8F;&#x7684;&#x7ED3;&#x679C;&#x884C;&#x7684;&#x987A;&#x5E8F;&#x4E5F;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;</p>
+<p>&#x57FA;&#x4E8E;&#x8FD9;&#x4E2A;&#x6211;&#x4EEC;&#x5C31;&#x57FA;&#x672C;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#x5206;&#x9875;&#x4F1A;&#x4E0D;&#x51C6;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x6392;&#x5E8F;&#x7684;&#x5B57;&#x6BB5;&#x662F;create_time&#xFF0C;&#x6B63;&#x597D;&#x53C8;&#x6709;&#x51E0;&#x4E2A;&#x76F8;&#x540C;&#x7684;&#x503C;&#x7684;&#x884C;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x6267;&#x884C;&#x65F6;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x5BF9;&#x5E94;&#x7684;&#x884C;&#x7684;&#x987A;&#x5E8F;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x5BF9;&#x5E94;&#x4E0A;&#x9762;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x7B2C;&#x4E00;&#x9875;&#x8FD4;&#x56DE;&#x7684;name&#x4E3A;8&#x7684;&#x6570;&#x636E;&#x884C;&#xFF0C;&#x53EF;&#x80FD;&#x6B63;&#x597D;&#x6392;&#x5728;&#x524D;&#x9762;&#xFF0C;&#x800C;&#x7B2C;&#x56DB;&#x9875;&#x67E5;&#x8BE2;&#x65F6;name&#x4E3A;8&#x7684;&#x6570;&#x636E;&#x884C;&#x6B63;&#x597D;&#x6392;&#x5728;&#x540E;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x56DB;&#x9875;&#x53C8;&#x51FA;&#x73B0;&#x4E86;&#x3002;</p>
+<p>&#x90A3;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x5462;&#xFF1F;</p>
+<p>&#x5B98;&#x65B9;&#x7ED9;&#x51FA;&#x4E86;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;
+<img src="https://upload-images.jianshu.io/upload_images/32047-64123f3aebddbc7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="pic8"></p>
+<p>&#x5982;&#x679C;&#x60F3;&#x5728;Limit&#x5B58;&#x5728;&#x6216;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x90FD;&#x4FDD;&#x8BC1;&#x6392;&#x5E8F;&#x7ED3;&#x679C;&#x76F8;&#x540C;&#xFF0C;&#x53EF;&#x4EE5;&#x989D;&#x5916;&#x52A0;&#x4E00;&#x4E2A;&#x6392;&#x5E8F;&#x6761;&#x4EF6;&#x3002;&#x4F8B;&#x5982;id&#x5B57;&#x6BB5;&#x662F;&#x552F;&#x4E00;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5728;&#x6392;&#x5E8F;&#x5B57;&#x6BB5;&#x4E2D;&#x989D;&#x5916;&#x52A0;&#x4E2A;id&#x6392;&#x5E8F;&#x53BB;&#x786E;&#x4FDD;&#x987A;&#x5E8F;&#x7A33;&#x5B9A;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x4E0A;&#x9762;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x4EE5;&#x5728;SQL&#x518D;&#x6DFB;&#x52A0;&#x4E2A;&#x6392;&#x5E8F;&#x5B57;&#x6BB5;&#xFF0C;&#x6BD4;&#x5982;fund_flow&#x7684;id&#x5B57;&#x6BB5;&#xFF0C;&#x8FD9;&#x6837;&#x5206;&#x9875;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x89E3;&#x51B3;&#x4E86;&#x3002;&#x4FEE;&#x6539;&#x540E;&#x7684;SQL&#x53EF;&#x4EE5;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code>SELECT * FROM user ORDER BY create_time,id LIMIT 6,2;
 </code></pre>
                                 
                                 </section>
@@ -677,6 +708,10 @@ convmv -f gbk -t utf8 -r MY_DIR
 
             
                 
+                <a href="mysql实现三目运算.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: mysql三目运算">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
                 
             
         
@@ -685,7 +720,7 @@ convmv -f gbk -t utf8 -r MY_DIR
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"中文文件编码在linux系统乱码问题","level":"1.5.3.1","depth":3,"next":{"title":"tomcat","level":"1.5.4","depth":2,"ref":"","articles":[{"title":"IntelliJ集成tomcat启动乱码","level":"1.5.4.1","depth":3,"path":"knowledge/tomcat/IntelliJ集成tomcat启动乱码.md","ref":"knowledge/tomcat/IntelliJ集成tomcat启动乱码.md","articles":[]}]},"previous":{"title":"linux","level":"1.5.3","depth":2,"ref":"","articles":[{"title":"中文文件编码在linux系统乱码问题","level":"1.5.3.1","depth":3,"path":"knowledge/linux/中文文件编码在linux系统乱码问题.md","ref":"knowledge/linux/中文文件编码在linux系统乱码问题.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"knowledge/linux/中文文件编码在linux系统乱码问题.md","mtime":"2018-05-29T06:33:08.911Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-06-03T03:52:14.937Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mysql order by与limit混用陷阱","level":"1.5.2.4","depth":3,"next":{"title":"linux","level":"1.5.3","depth":2,"ref":"","articles":[{"title":"中文文件编码在linux系统乱码问题","level":"1.5.3.1","depth":3,"path":"knowledge/linux/中文文件编码在linux系统乱码问题.md","ref":"knowledge/linux/中文文件编码在linux系统乱码问题.md","articles":[]}]},"previous":{"title":"mysql三目运算","level":"1.5.2.3","depth":3,"path":"knowledge/database/mysql实现三目运算.md","ref":"knowledge/database/mysql实现三目运算.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"knowledge/database/mysql order by与limit混用陷阱.md","mtime":"2018-06-01T05:38:42.761Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-06-03T03:52:14.937Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
