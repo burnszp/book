@@ -30,6 +30,7 @@
     * [mysql分组查询符合条件的记录](knowledge/database/mysql分组查询符合条件的记录.md)
     * [mysql用户权限](knowledge/database/mysql权限管理.md)
     * [mysql三目运算](knowledge/database/mysql实现三目运算.md)
+    * [mysql order by与limit混用陷阱](knowledge/database/mysql order by与limit混用陷阱.md)
   * linux
     * [中文文件编码在linux系统乱码问题](knowledge/linux/中文文件编码在linux系统乱码问题.md)
   * tomcat
