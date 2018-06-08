@@ -34,6 +34,7 @@
     * [mysql用户权限](knowledge/database/mysql权限管理.md)
     * [mysql三目运算](knowledge/database/mysql实现三目运算.md)
     * [mysql order by与limit混用陷阱](knowledge/database/mysql order by与limit混用陷阱.md)
+    * [mysql查询结果横转纵](knowledge/database/mysql查询结果横转纵.md)
   * linux
     * [中文文件编码在linux系统乱码问题](knowledge/linux/中文文件编码在linux系统乱码问题.md)
   * tomcat
