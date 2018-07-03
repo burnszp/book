@@ -35,6 +35,8 @@
     * [mysql三目运算](knowledge/database/mysql实现三目运算.md)
     * [mysql order by与limit混用陷阱](knowledge/database/mysql order by与limit混用陷阱.md)
     * [mysql查询结果横转纵](knowledge/database/mysql查询结果横转纵.md)
+  * j2ee
+    * [hiberate lazy加载和fast json 循环引用检测导致列表查询的问题](knowledge/j2ee/hiberate lazy加载和fast json 循环引用检测导致列表查询的问题.md)
   * linux
     * [中文文件编码在linux系统乱码问题](knowledge/linux/中文文件编码在linux系统乱码问题.md)
   * tomcat
