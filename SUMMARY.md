@@ -36,3 +36,5 @@
     * [中文文件编码在linux系统乱码问题](knowledge/linux/中文文件编码在linux系统乱码问题.md)
   * tomcat
     * [IntelliJ集成tomcat启动乱码](knowledge/tomcat/IntelliJ集成tomcat启动乱码.md)
+* 哈哈
+  * [妙语连珠](haha/妙语连珠.md)
